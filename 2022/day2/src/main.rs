@@ -1,10 +1,10 @@
 use std::fs;
-//Rock: A X 1
-//Paper: B Y 2
-//Scissor: C Z 3
+//Rock: A X 1 lose 
+//Paper: B Y 2 draw
+//Scissor: C Z 3 win
 fn main() {
     let contents = fs::read_to_string("input.txt").unwrap();
-    let mut lines = contents.lines();
+    let lines = contents.lines();
     let mut total = 0;
     for line in lines {
         let mut c = line.chars();
@@ -14,9 +14,9 @@ fn main() {
         c.next();
         match expected {
             'A'=> {match response {
-                'X'=> total += 4,
-                'Y'=> total += 8,
-                'Z'=> total += 3,
+                'X'=> total += 3,
+                'Y'=> total += 4,
+                'Z'=> total += 8,
                 _ => println!("")}},
             'B'=> {match response {
                 'X'=> total += 1,
@@ -24,9 +24,9 @@ fn main() {
                 'Z'=> total += 9,
                 _ => println!("")}},
             'C'=> {match response {
-                'X'=> total += 7,
-                'Y'=> total += 2,
-                'Z'=> total += 6,
+                'X'=> total += 2,
+                'Y'=> total += 6,
+                'Z'=> total += 7,
                 _ => println!("")}},
             _ => println!("")
         }
